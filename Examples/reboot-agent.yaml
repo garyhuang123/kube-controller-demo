@@ -4,12 +4,15 @@ metadata:
   name: reboot-agent
 spec:
   template:
+    metadata:
+      labels:
+        k8s-app: reboot-agent
     spec:
       containers:
       - name: reboot-agent
-        image: TBD
+        image: sjdevosonode02.ehealthinsurance.com/demo-reboot-agent
         command:
-        - ./reboot-agent --v=4
+        - ./reboot-agent
         - --v=4
         env:
           - name: NODE_NAME

@@ -22,7 +22,7 @@ vendor:
 clean:
 	rm -rf bin
 
-bin/%: LDFLAGS=-X github.com/aaronlevy/kube-controller-demo/common.Version=$(shell $(CURDIR)/git-version.sh)
+bin/%: LDFLAGS=-X github.com/aaronlevy/kube-controller-demo/common.Version=$(shell sh $(CURDIR)/git-version.sh)
 bin/%: $(GOFILES)
 	mkdir -p $(dir $@)
 	GOOS=$(word 1, $(subst /, ,$*)) GOARCH=amd64 go build -ldflags "$(LDFLAGS)" -o $@ github.com/aaronlevy/kube-controller-demo/$(notdir $@)
